@@ -189,8 +189,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* MODIFICATO: Ridotto padding per dare più spazio */
-  padding: 8px 12px; 
+  /* Padding standard per desktop */
+  padding: 15px; 
   box-sizing: border-box;
   opacity: 0;
   pointer-events: none;
@@ -247,15 +247,14 @@ body {
   text-align: right;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* MODIFICATO: Centrato verticalmente invece che flex-start */
+  justify-content: center; 
   height: 100%;
-  padding-top: 0; /* Rimosso padding extra */
 }
 
 .final-text p {
   color: #D2042D;
   font-family: 'Caveat', cursive;
-  font-size: 1.5rem; /* MODIFICATO: Leggermente più piccolo */
+  font-size: 1.6rem; 
   font-weight: bold;
   margin: 0;
   line-height: 1;
@@ -319,17 +318,17 @@ body {
 
 /* --- BOTTONI YES / NO --- */
 .buttons-container {
-  margin-top: 10px; /* MODIFICATO: Meno margine sopra */
+  margin-top: 15px; 
   display: flex;
-  gap: 8px; /* Gap leggermente ridotto */
+  gap: 10px; 
   justify-content: flex-end;
   position: relative;
 }
 
 .btn {
-  padding: 4px 12px; /* Bottoni leggermente più compatti */
+  padding: 5px 15px; 
   font-family: 'Caveat', cursive;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: bold;
   border: none;
   border-radius: 5px;
@@ -358,7 +357,7 @@ body {
 }
 
 /* =========================================
-   MEDIA QUERY PER SMARTPHONE
+   MEDIA QUERY PER SMARTPHONE (COMPATTAZIONE ESTREMA)
    ========================================= */
 @media (max-width: 768px) {
   .row-container {
@@ -390,13 +389,38 @@ body {
     transform: translate(-50%, -50%) scale(1.5) !important;
   }
   
-  /* Adattamento testo mobile per evitare che esca */
-  .final-text p {
-    font-size: 1.1rem; /* Testo più piccolo su mobile */
+  /* --- MODIFICHE CRUCIALI PER LO SPAZIO --- */
+  
+  /* 1. Riduciamo i margini interni della lettera per guadagnare spazio */
+  .final-content {
+    padding: 5px 10px; 
   }
+
+  /* 2. Riduciamo l'immagine per dare più spazio al testo */
+  .picture-wrapper {
+    width: 38%;
+  }
+
+  /* 3. Allarghiamo l'area testo */
+  .final-text {
+    width: 60%; 
+  }
+  
+  /* 4. Testo più piccolo */
+  .final-text p {
+    font-size: 1.1rem; 
+    margin-bottom: 5px; /* Spazio minimo prima dei bottoni */
+  }
+
+  /* 5. Bottoni più compatti e vicini */
+  .buttons-container {
+    margin-top: 5px; 
+    gap: 5px;
+  }
+
   .btn {
-    font-size: 1rem; /* Bottoni più piccoli su mobile */
-    padding: 3px 10px;
+    font-size: 0.9rem; /* Testo bottoni più piccolo */
+    padding: 4px 10px; /* Bottoni meno "grassi" */
   }
 }
 
