@@ -314,7 +314,10 @@ body {
   background-color: white;
   color: #D2042D;
   border: 1px solid #D2042D;
-  /* Position absolute ci servirà per muoverlo via JS */
   position: relative; 
   z-index: 100;
+  
+  /* --- MODIFICA: Bottone non cliccabile --- */
+  pointer-events: none; /* Disabilita click e touch */
+  opacity: 0.5; /* Rende il bottone semi-trasparente */
 }
