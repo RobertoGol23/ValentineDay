@@ -33,7 +33,6 @@ body {
   transition: all 0.5s ease;
 }
 
-/* --- EFFETTO SCRITTURA --- */
 .side-text {
   color: white;
   width: 400px;
@@ -55,7 +54,6 @@ body {
   animation-delay: 0.5s;
 }
 
-/* --- CASSETTA DELLE LETTERE --- */
 .mailbox-container {
   position: relative;
   width: 350px;
@@ -78,7 +76,6 @@ body {
   transition: opacity 0.1s ease;
 }
 
-/* --- PARTICELLE LETTERE --- */
 .mini-letter-particle {
   position: absolute;
   top: 135px;
@@ -92,7 +89,6 @@ body {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* --- LA LETTERA PRINCIPALE --- */
 .letter {
   position: absolute;
   left: 50%;
@@ -114,7 +110,6 @@ body {
   border-radius: 4px;
 }
 
-/* Stile Air Mail (Contenuto Iniziale) */
 .airmail-border {
   width: 100%;
   height: 100%;
@@ -179,7 +174,6 @@ body {
   box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
 
-/* --- CONTENUTO FINALE: CARTA VERGATA --- */
 .final-content {
   position: absolute;
   top: 0;
@@ -189,8 +183,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* Padding standard per desktop */
-  padding: 15px; 
+  padding: 15px;
   box-sizing: border-box;
   opacity: 0;
   pointer-events: none;
@@ -247,14 +240,14 @@ body {
   text-align: right;
   display: flex;
   flex-direction: column;
-  justify-content: center; 
+  justify-content: center;
   height: 100%;
 }
 
 .final-text p {
   color: #D2042D;
   font-family: 'Caveat', cursive;
-  font-size: 1.6rem; 
+  font-size: 1.6rem;
   font-weight: bold;
   margin: 0;
   line-height: 1;
@@ -285,7 +278,6 @@ body {
   pointer-events: auto;
 }
 
-/* --- PARTICELLE CUORE --- */
 .heart-particle {
   position: absolute;
   top: -50px;
@@ -318,15 +310,15 @@ body {
 
 /* --- BOTTONI YES / NO --- */
 .buttons-container {
-  margin-top: 15px; 
+  margin-top: 15px;
   display: flex;
-  gap: 10px; 
+  gap: 10px;
   justify-content: flex-end;
   position: relative;
 }
 
 .btn {
-  padding: 5px 15px; 
+  padding: 5px 15px;
   font-family: 'Caveat', cursive;
   font-size: 1.2rem;
   font-weight: bold;
@@ -334,6 +326,9 @@ body {
   border-radius: 5px;
   cursor: pointer;
   transition: transform 0.2s;
+  /* --- AGGIUNTA FONDAMENTALE DI SICUREZZA --- */
+  flex-shrink: 0; /* Impedisce al bottone di schiacciarsi o espandersi */
+  flex-grow: 0;   /* Impedisce al bottone di riempire spazio vuoto */
 }
 
 .btn-yes {
@@ -356,9 +351,7 @@ body {
   transition: top 0.3s ease, left 0.3s ease;
 }
 
-/* =========================================
-   MEDIA QUERY PER SMARTPHONE (COMPATTAZIONE ESTREMA)
-   ========================================= */
+/* --- MEDIA QUERY SMARTPHONE --- */
 @media (max-width: 768px) {
   .row-container {
     flex-direction: column;
@@ -389,38 +382,26 @@ body {
     transform: translate(-50%, -50%) scale(1.5) !important;
   }
   
-  /* --- MODIFICHE CRUCIALI PER LO SPAZIO --- */
-  
-  /* 1. Riduciamo i margini interni della lettera per guadagnare spazio */
   .final-content {
     padding: 5px 10px; 
   }
-
-  /* 2. Riduciamo l'immagine per dare più spazio al testo */
   .picture-wrapper {
     width: 38%;
   }
-
-  /* 3. Allarghiamo l'area testo */
   .final-text {
     width: 60%; 
   }
-  
-  /* 4. Testo più piccolo */
   .final-text p {
     font-size: 1.1rem; 
-    margin-bottom: 5px; /* Spazio minimo prima dei bottoni */
+    margin-bottom: 5px; 
   }
-
-  /* 5. Bottoni più compatti e vicini */
   .buttons-container {
     margin-top: 5px; 
     gap: 5px;
   }
-
   .btn {
-    font-size: 0.9rem; /* Testo bottoni più piccolo */
-    padding: 4px 10px; /* Bottoni meno "grassi" */
+    font-size: 0.9rem;
+    padding: 4px 10px;
   }
 }
 
