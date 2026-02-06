@@ -1,3 +1,4 @@
+/* --- IMPOSTAZIONI BASE --- */
 body {
   margin: 0;
   display: flex;
@@ -21,6 +22,7 @@ body {
   position: relative;
 }
 
+/* --- CONTENITORE PRINCIPALE --- */
 .row-container {
   display: flex;
   flex-direction: row;
@@ -31,6 +33,7 @@ body {
   transition: all 0.5s ease;
 }
 
+/* --- EFFETTO SCRITTURA --- */
 .side-text {
   color: white;
   width: 400px;
@@ -52,6 +55,7 @@ body {
   animation-delay: 0.5s;
 }
 
+/* --- CASSETTA DELLE LETTERE --- */
 .mailbox-container {
   position: relative;
   width: 350px;
@@ -74,6 +78,7 @@ body {
   transition: opacity 0.1s ease;
 }
 
+/* --- PARTICELLE LETTERE --- */
 .mini-letter-particle {
   position: absolute;
   top: 135px;
@@ -87,6 +92,7 @@ body {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+/* --- LA LETTERA PRINCIPALE --- */
 .letter {
   position: absolute;
   left: 50%;
@@ -108,6 +114,7 @@ body {
   border-radius: 4px;
 }
 
+/* Stile Air Mail (Contenuto Iniziale) */
 .airmail-border {
   width: 100%;
   height: 100%;
@@ -172,6 +179,7 @@ body {
   box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
 
+/* --- CONTENUTO FINALE: CARTA VERGATA --- */
 .final-content {
   position: absolute;
   top: 0;
@@ -181,7 +189,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
+  /* MODIFICATO: Ridotto padding per dare più spazio */
+  padding: 8px 12px; 
   box-sizing: border-box;
   opacity: 0;
   pointer-events: none;
@@ -238,20 +247,19 @@ body {
   text-align: right;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center; /* MODIFICATO: Centrato verticalmente invece che flex-start */
   height: 100%;
-  padding-top: 15px;
+  padding-top: 0; /* Rimosso padding extra */
 }
 
 .final-text p {
   color: #D2042D;
   font-family: 'Caveat', cursive;
-  font-size: 1.6rem;
+  font-size: 1.5rem; /* MODIFICATO: Leggermente più piccolo */
   font-weight: bold;
   margin: 0;
-  line-height: 1.1;
+  line-height: 1;
   text-shadow: 0 1px 0 rgba(255,255,255,0.8);
-  margin-top: -5px;
 }
 
 .transparent {
@@ -278,6 +286,7 @@ body {
   pointer-events: auto;
 }
 
+/* --- PARTICELLE CUORE --- */
 .heart-particle {
   position: absolute;
   top: -50px;
@@ -308,6 +317,49 @@ body {
   left: -10px;
 }
 
+/* --- BOTTONI YES / NO --- */
+.buttons-container {
+  margin-top: 10px; /* MODIFICATO: Meno margine sopra */
+  display: flex;
+  gap: 8px; /* Gap leggermente ridotto */
+  justify-content: flex-end;
+  position: relative;
+}
+
+.btn {
+  padding: 4px 12px; /* Bottoni leggermente più compatti */
+  font-family: 'Caveat', cursive;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-yes {
+  background-color: #D2042D;
+  color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.btn-yes:hover {
+  transform: scale(1.1);
+  background-color: #b00325;
+}
+
+.btn-no {
+  background-color: white;
+  color: #D2042D;
+  border: 1px solid #D2042D;
+  position: relative;
+  z-index: 100;
+  transition: top 0.3s ease, left 0.3s ease;
+}
+
+/* =========================================
+   MEDIA QUERY PER SMARTPHONE
+   ========================================= */
 @media (max-width: 768px) {
   .row-container {
     flex-direction: column;
@@ -337,14 +389,18 @@ body {
   .zoomed-center {
     transform: translate(-50%, -50%) scale(1.5) !important;
   }
+  
+  /* Adattamento testo mobile per evitare che esca */
   .final-text p {
-    font-size: 1.3rem;
+    font-size: 1.1rem; /* Testo più piccolo su mobile */
   }
-  .final-text {
-    padding-top: 10px;
+  .btn {
+    font-size: 1rem; /* Bottoni più piccoli su mobile */
+    padding: 3px 10px;
   }
 }
 
+/* --- KEYFRAMES --- */
 @keyframes typing { from { width: 0 } to { width: 100% } }
 @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: white; } }
 @keyframes dropAndRise {
@@ -362,43 +418,4 @@ body {
   0% { top: -50px; opacity: 0; }
   10% { opacity: 0.8; }
   100% { top: 110vh; opacity: 0; transform: rotate(45deg) scale(0.8); }
-}
-
-.buttons-container {
-  margin-top: 15px;
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end;
-  position: relative;
-}
-
-.btn {
-  padding: 5px 15px;
-  font-family: 'Caveat', cursive;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.btn-yes {
-  background-color: #D2042D;
-  color: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.btn-yes:hover {
-  transform: scale(1.1);
-  background-color: #b00325;
-}
-
-.btn-no {
-  background-color: white;
-  color: #D2042D;
-  border: 1px solid #D2042D;
-  position: relative;
-  z-index: 100;
-  transition: top 0.3s ease, left 0.3s ease;
 }
