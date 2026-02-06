@@ -7,9 +7,8 @@ const sideText = document.getElementById('sideText');
 
 let heartInterval;
 
-// --- GESTIONE CLICK ---
 letter.addEventListener('click', (event) => {
-  event.preventDefault(); 
+  event.preventDefault();
   
   clearInterval(heartInterval);
   document.querySelectorAll('.heart-particle').forEach(el => el.remove());
@@ -21,15 +20,12 @@ letter.addEventListener('click', (event) => {
   container.classList.add('zoomed-center');
 });
 
-
-// --- FUNZIONE: ESPLOSIONE LETTERE ---
-function createLetterParticle() 
-{
+function createLetterParticle() {
   const particle = document.createElement('div');
   particle.classList.add('mini-letter-particle');
   
-  const tx = (Math.random() - 0.5) * 400; 
-  const ty = (Math.random() - 0.5) * 400 - 100; 
+  const tx = (Math.random() - 0.5) * 400;
+  const ty = (Math.random() - 0.5) * 400 - 100;
   const r = (Math.random() - 0.5) * 360;
   
   particle.style.setProperty('--tx', `${tx}px`);
@@ -46,16 +42,14 @@ function createLetterParticle()
   }, duration * 1000);
 }
 
-
-// --- FUNZIONE: PIOGGIA DI CUORI ---
 function createHeartRain() {
   const heart = document.createElement('div');
   heart.classList.add('heart-particle');
   
   heart.style.left = Math.random() * 100 + 'vw';
   
-  const duration = 3 + Math.random() * 4; 
-  const delay = Math.random() * 2; 
+  const duration = 3 + Math.random() * 4;
+  const delay = Math.random() * 2;
   
   heart.style.animation = `fallRain ${duration}s linear ${delay}s forwards`;
   
@@ -72,40 +66,50 @@ const btnYes = document.getElementById('btnYes');
 const btnNo = document.getElementById('btnNo');
 
 btnYes.addEventListener('click', (e) => {
-  e.stopPropagation(); 
-  alert("Basta che non mi fai diventare più ciccio ❤️ Ti amo"); 
-  
+  e.stopPropagation();
+  alert("Basta che non mi fai diventare più ciccio ❤️ Ti amo");
   setInterval(createHeartRain, 100);
 });
 
-btnNo.addEventListener('mouseover', moveButton); 
+btnNo.addEventListener('mouseover', moveButton);
 btnNo.addEventListener('click', moveButton);
 btnNo.addEventListener('touchstart', moveButton);
 
 function moveButton(e) {
-  e.preventDefault();
+  if(e.cancelable) e.preventDefault();
   e.stopPropagation();
 
   const finalContent = document.querySelector('.final-content');
+  const buttonsContainer = document.querySelector('.buttons-container');
 
   if (btnNo.parentElement !== finalContent) {
-    btnNo.style.position = 'absolute'; 
-    btnNo.style.zIndex = '1000';     
-    finalContent.appendChild(btnNo);   
+    const rect = btnNo.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+
+    const spacer = document.createElement('div');
+    spacer.style.width = `${width}px`;
+    spacer.style.height = `${height}px`;
+    spacer.style.display = 'inline-block';
+    
+    buttonsContainer.appendChild(spacer);
+
+    btnNo.style.position = 'absolute';
+    btnNo.style.zIndex = '1000';
+    finalContent.appendChild(btnNo);
   }
 
-  const containerWidth = finalContent.offsetWidth; 
+  const containerWidth = finalContent.offsetWidth;
   const containerHeight = finalContent.offsetHeight;
-
   const btnWidth = btnNo.offsetWidth;
   const btnHeight = btnNo.offsetHeight;
 
-  const maxLeft = containerWidth - btnWidth - 20; 
-  const maxTop = containerHeight - btnHeight - 20; 
+  const maxLeft = containerWidth - btnWidth - 20;
+  const maxTop = containerHeight - btnHeight - 20;
 
   const newLeft = Math.max(10, Math.random() * maxLeft);
   const newTop = Math.max(10, Math.random() * maxTop);
-  
+
   btnNo.style.left = `${newLeft}px`;
   btnNo.style.top = `${newTop}px`;
 }
