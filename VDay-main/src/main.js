@@ -80,6 +80,7 @@ btnYes.addEventListener('click', (e) => {
 
 btnNo.addEventListener('mouseover', moveButton); 
 btnNo.addEventListener('click', moveButton);
+btnNo.addEventListener('touchstart', moveButton);
 
 function moveButton(e) {
   e.preventDefault();
